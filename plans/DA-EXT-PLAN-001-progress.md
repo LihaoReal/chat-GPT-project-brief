@@ -36,3 +36,26 @@
 2. 等待 CI 结果；本批主要为 Markdown/Skill 文档，CI 主要用于确认既有回归没有被破坏。
 3. PR 经用户审查和明确同意后再合并。
 4. 合并后选取一个文档类任务进行试用，依据实际问题调整，不预先扩大自动化或测试范围。
+
+
+## 记录 002：PR #4 定向一致性审查
+
+### 审查发现与修正
+
+- 发现通信协议曾把 `BLOCKED` 同时列为单项检查结果；这与现有 `self-check.md` / 验收状态机只允许 `PASS`、`FAIL`、`NOT_VERIFIED` 的规则不一致。
+- 已在开发分支修正 `docs/agent-message-protocol-v1.0.md`：单项验收与自检只使用三种结果；阻塞通过 `BLOCKED_REPORT` 表达，任务状态仍由既有状态机转换。
+- 已同步修正 `skills/shared/verification/SKILL.md`，避免把流程阻塞写成单项验证结果。
+- 未修改 Python、Schema、状态机实现或 `main`。
+
+### 当前状态
+
+- PR #4 仍开放、未合并。
+- 修正提交：`c88a7400ba879a120c725b1aef35ef8b103e227a`（通信协议）；`6435f0cb998c12e45333c96f2e66fa12a0e7d3ff`（共享验证 Skill）。
+- GitHub Actions run #164（Python regression tests）检查时仍在运行，结果待确认。
+- 本次属于文档一致性修正；既有 Python 回归工作流并不等价于真实任务对 Skill 的可用性验证。
+
+### 下一步
+
+1. 确认 run #164 的最终结果。
+2. 完成一轮轻量审查：Skill 内容是否重复角色规范、模板是否便于复制使用、相对路径引用是否有效。
+3. 更新 PR 说明与本进展记录；等待用户审查，未经明确批准不合并。
