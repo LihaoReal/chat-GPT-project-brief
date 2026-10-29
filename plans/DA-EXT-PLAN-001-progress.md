@@ -51,7 +51,7 @@
 
 - PR #4 仍开放、未合并。
 - 修正提交：`c88a7400ba879a120c725b1aef35ef8b103e227a`（通信协议）；`6435f0cb998c12e45333c96f2e66fa12a0e7d3ff`（共享验证 Skill）。
-- GitHub Actions run #164（Python regression tests）检查时仍在运行，结果待确认。
+- GitHub Actions run #164（Python regression tests）已完成，结论为 `success`。这确认现有回归工作流通过，但不等价于真实任务对 Skill 的可用性验证。
 - 本次属于文档一致性修正；既有 Python 回归工作流并不等价于真实任务对 Skill 的可用性验证。
 
 ### 下一步
